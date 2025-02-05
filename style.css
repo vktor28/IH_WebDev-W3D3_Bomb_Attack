@@ -1,0 +1,81 @@
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+section {
+  max-width: 1200px;
+  margin: 100px auto;
+}
+.grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 60px;
+}
+
+.grid-item {
+  width: 250px;
+  height: 250px;
+}
+
+.card.bomb {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+.grid-item {
+  perspective: 1000px; /* Controla la profundidad de la perspectiva 3D */
+  width: 250px;
+  height: 250px;
+}
+
+/* La “carta” en sí; uso de transform-style para mantener la capa 3D */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+/* Al hacer hover sobre el contenedor, rotamos la carta 180º en el eje Y */
+.grid-item:hover .card {
+  transform: rotateY(180deg);
+}
+
+/* Ambas caras de la carta tienen mismas dimensiones y posición */
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* Oculta la cara trasera cuando se gira */
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Cara frontal */
+.card-front {
+  background-image: url("https://image.spreadshirtmedia.net/image-server/v1/products/T1459A839PA4459PT28D333441491W9160H10000/views/1,width=378,height=378,appearanceId=839,backgroundColor=F2F2F2/bomba-genial-gafas-de-sol-zapatillas-rojas-rock-sign.jpg");
+  background-size: cover;
+}
+
+/* Cara trasera */
+.card-back.bomb {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHX9R9NFelxdMHfsFfLT2kH2UR9rcLlWsxzA&s");
+  background-size: cover;
+  transform: rotateY(180deg); /* Para que esté “detrás” */
+}
+
+.card-back.extintor {
+    background: url("https://biocamino.net/477-thickbox_default/estintore-blusapparaat-fire-extinguisher-extintor-de-incendios-extincteur-d-incendie-1kg-con-barometro.jpg");
+    background-size: cover;
+    transform: rotateY(180deg); /* Para que esté “detrás” */
+  }
